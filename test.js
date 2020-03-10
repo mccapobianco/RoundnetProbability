@@ -55,9 +55,9 @@ function calcP(score, break_rate){
 }
 
 function calcProb0FromTable(teamTable, break_rate){
-	var score0 = parseInt(teamTable.rows[0].cells[2].children[0].value);
-	var score1 = parseInt(teamTable.rows[1].cells[2].children[0].value);
-	if (teamTable.rows[0].cells[4].children[0].checked){
+	var score0 = parseInt(teamTable.rows[1].cells[2].children[0].value);
+	var score1 = parseInt(teamTable.rows[2].cells[2].children[0].value);
+	if (teamTable.rows[1].cells[4].children[0].checked){
 		return calcP([score0, score1], break_rate)
 	} else {
 		return 1-calcP([score1, score0], break_rate)
@@ -86,7 +86,7 @@ function onPlusClick(id){
 	var teamTable = document.getElementById("teamTable");
 	var serving = teamTable.rows[id].cells[4].children[0].checked;
 	if (serving){
-		if (id == 0){
+		if (id == 1){
 			var temp = netTable.rows[0].cells[1].textContent;
 			netTable.rows[0].cells[1].textContent = netTable.rows[1].cells[2].textContent;
 			netTable.rows[1].cells[2].textContent = temp;
@@ -106,7 +106,7 @@ function onPlusClick(id){
 
 function onCheckClick(id){
 	teamTable.rows[id].cells[4].children[0].checked = true
-	teamTable.rows[1-id].cells[4].children[0].checked = false
+	teamTable.rows[3-id].cells[4].children[0].checked = false
 	onEnter()
 
 }
@@ -119,14 +119,14 @@ function onSubmitClick(){
 
 function onEnter(){
 	var nameTable = document.getElementById("nameTable");
-	var score0 = parseInt(teamTable.rows[0].cells[2].children[0].value);
-	var score1 = parseInt(teamTable.rows[1].cells[2].children[0].value);
+	var score0 = parseInt(teamTable.rows[1].cells[2].children[0].value);
+	var score1 = parseInt(teamTable.rows[2].cells[2].children[0].value);
 	var p0 = (100*calcProb0FromTable(teamTable, break_rate)).toFixed(2);
 	var p1 = (100-p0).toFixed(2);
-	teamTable.rows[0].cells[1].innerHTML = (p0+"%").bold();
-	teamTable.rows[1].cells[1].innerHTML = (p1+"%").bold();
-	nameTable.rows[0].cells[0].innerHTML = teamTable.rows[0].cells[0].children[0].value.bold();
-	nameTable.rows[0].cells[1].innerHTML = teamTable.rows[1].cells[0].children[0].value.bold();
+	teamTable.rows[1].cells[1].innerHTML = (p0+"%").bold();
+	teamTable.rows[2].cells[1].innerHTML = (p1+"%").bold();
+	nameTable.rows[0].cells[0].innerHTML = teamTable.rows[1].cells[0].children[0].value.bold();
+	nameTable.rows[0].cells[1].innerHTML = teamTable.rows[2].cells[0].children[0].value.bold();
 	updateNames()
 	boldServer()
 }
@@ -140,7 +140,7 @@ function onKeyUp(){
 function boldServer(){
 	var netTable = document.getElementById("netTable");
 	var teamTable = document.getElementById("teamTable");
-	var team0serving = teamTable.rows[0].cells[4].children[0].checked
+	var team0serving = teamTable.rows[1].cells[4].children[0].checked
 	for (var i=0; i<3; i++){
 		for (var j=0; j<3; j++){
 			netTable.rows[i].cells[j].innerHTML = netTable.rows[i].cells[j].textContent;
@@ -149,7 +149,7 @@ function boldServer(){
 	netTable.rows[1].cells[1].innerHTML = netTable.rows[1].cells[1].innerHTML.bold()
 	netTable.rows[1].cells[1].style.fontSize = "xxx-large";
 	if (team0serving){
-		var score = parseInt(teamTable.rows[0].cells[2].children[0].value);
+		var score = parseInt(teamTable.rows[1].cells[2].children[0].value);
 		if (score%2 == 0){
 			netTable.rows[0].cells[1].innerHTML = netTable.rows[0].cells[1].innerHTML.bold();
 			netTable.rows[0].cells[1].innerHTML = netTable.rows[0].cells[1].innerHTML.italics();
@@ -158,7 +158,7 @@ function boldServer(){
 			netTable.rows[1].cells[2].innerHTML = netTable.rows[1].cells[2].innerHTML.italics();
 		}
 	} else {
-		var score = parseInt(teamTable.rows[1].cells[2].children[0].value);
+		var score = parseInt(teamTable.rows[2].cells[2].children[0].value);
 		if (score%2 == 0){
 			netTable.rows[2].cells[1].innerHTML = netTable.rows[2].cells[1].innerHTML.bold();
 			netTable.rows[2].cells[1].innerHTML = netTable.rows[2].cells[1].innerHTML.italics();
