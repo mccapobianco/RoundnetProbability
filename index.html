@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Roundnet Probability</title>
+</head>
+<body>
+	<p id="test"></p>
+	<table id="teamTable" ,="" border="1px">
+		<tbody>
+			<tr>
+				<td><input value="Team 1" onkeyup="onKeyUp()"></td>
+				<td><b>46.42%</b></td>
+				<td><input value = "0" size="1" onkeyup="onKeyUp()"></td>
+				<td><button id="0" onclick="onPlusClick(0)">+</button></td>
+				<td><input type="checkbox" id="0" onclick="onCheckClick(0)" checked=true></td>
+			</tr>
+			<tr>
+				<td><input value="Team 2" onkeyup="onKeyUp()"></td>
+				<td><b>53.58%</b></td>
+				<td><input value="0" size="1" onkeyup="onKeyUp()"></td>
+				<td><button id="1" onclick="onPlusClick(1)">+</button></td>
+				<td><input type="checkbox" id="1" onclick="onCheckClick(1)"></td>
+			</tr>
+		</tbody>
+	</table>
+	<label for="break_rate">Break rate:</label>
+	<input name="gender" id="break_rate" value="0.25" size="6px">
+	<input type="submit" value="Submit" onclick="onSubmitClick()">
+	<br><br>
+	<table id="nameTable", border=1px>
+		<tr>
+			<td><b>Team 1</b></td>
+			<td><b>Team 2</b></td>
+		</tr>
+		<tr>
+			<td><input id="player00" value="Player 1" onkeyup="onKeyUp()"></td>
+			<td><input id="player01" value="Player 3" onkeyup="onKeyUp()"></td>
+		</tr>
+		<tr>
+			<td><input id="player10" value="Player 2" onkeyup="onKeyUp()"></td>
+			<td><input id="player11" value="Player 4" onkeyup="onKeyUp()"></td>
+		</tr>
+	</table>
+	<br><br>
+	<table id="netTable" frame="box">
+		<tr>
+			<td></td>
+			<td><b><i>Player 1</i></b></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Player 3</td>
+			<td><center> <font face="Arial" size="10"><b>◯</b></font></center></td>
+			<td>Player 2</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>Player 4</td>
+			<td></td>
+		</tr>
+	</table>
+	<br>
+</body>
+<script src="./test.js"></script>
+</html>
