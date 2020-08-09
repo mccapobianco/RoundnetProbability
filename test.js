@@ -49,6 +49,7 @@ function calcP(score, break_rate){
 		val = (array[max_score][i][0]+array[max_score][i][1]);
 		prob += val
 	}
+	console.log(array)
 	prob += array[max_score-1][max_score-1][0]*pWinTied(break_rate);
 	prob += array[max_score-1][max_score-1][1]*(1-pWinTied(break_rate));
 	return prob
@@ -64,6 +65,8 @@ function calcProb0FromTable(teamTable, break_rate){
 	}
 }
 
+// U = 1 - T * (1 - B)
+// T = B * U + (1 - U) * (1 - B)
 function pWinUpOne(break_rate){
 	var b = break_rate;
 	return (2*b - b*b)/(3*b - 2*b*b);
@@ -114,6 +117,8 @@ function onCheckClick(id){
 function onSubmitClick(){
 	var input = document.getElementById("break_rate")
 	break_rate = input.value
+	var input2 = document.getElementById("game_to")
+	max_score = input2.value
 	onEnter()
 }
 
