@@ -5,39 +5,49 @@
 </head>
 <body>
 	<p id="test"></p>
-	<table id="teamTable" ,="" border="1px">
-		<tbody>
-			<tr>
-				<td>Team Name</td>
-				<td>Probability</td>
-				<td>Score</td>
-				<td>Add 1</td>
-				<td>Serving</td>
-			</tr>
-			<tr>
-				<td><input value="Team 1" onkeyup="onKeyUp()"></td>
-				<td><b>46.42%</b></td>
-				<td><input value = "0" size="1" onkeyup="onKeyUp()"></td>
-				<td><button id="1" onclick="onPlusClick(1)">+</button></td>
-				<td><input type="checkbox" id="1" onclick="onCheckClick(1)" checked=true></td>
-			</tr>
-			<tr>
-				<td><input value="Team 2" onkeyup="onKeyUp()"></td>
-				<td><b>53.58%</b></td>
-				<td><input value="0" size="1" onkeyup="onKeyUp()"></td>
-				<td><button id="2" onclick="onPlusClick(2)">+</button></td>
-				<td><input type="checkbox" id="2" onclick="onCheckClick(2)"></td>
-			</tr>
-		</tbody>
-	</table>
+	<div style="display: flex;">
+		<table id="teamTable" ,="" border="1px">
+			<tbody>
+				<tr>
+					<td>Team Name</td>
+					<td>Probability</td>
+					<td>Score</td>
+					<td>Add 1</td>
+					<td>Serving</td>
+				</tr>
+				<tr>
+					<td><input value="Team 1" onkeyup="onKeyUp()"></td>
+					<td><b>46.42%</b></td>
+					<td><input value = "0" size="1" onkeyup="onKeyUp()"></td>
+					<td><button id="1" onclick="onPlusClick(1)">+</button></td>
+					<td><input type="checkbox" id="1" onclick="onCheckClick(1)" checked=true></td>
+				</tr>
+				<tr>
+					<td><input value="Team 2" onkeyup="onKeyUp()"></td>
+					<td><b>53.58%</b></td>
+					<td><input value="0" size="1" onkeyup="onKeyUp()"></td>
+					<td><button id="2" onclick="onPlusClick(2)">+</button></td>
+					<td><input type="checkbox" id="2" onclick="onCheckClick(2)"></td>
+				</tr>
+			</tbody>
+		</table>
+		&nbsp;
+		<p id="current_settings" style="text-align: left; white-space: pre;">Break rate: 25%<br>Game to: 21<br>Serving rules: Classic</p>
+	</div>
 	<br>
 	<label for="break_rate">Break rate:</label>
 	<input id="break_rate" value="0.25" size="6px">
 	&nbsp
 	<label for="game_to">Game to:</label>
 	<input id="game_to" value="21" size = "6px">
+	&nbsp
+	<label for="serving_rules">Serving rules:</label>
+	<select id="serving_rules">
+		<option value="classic" selected>Classic</option>
+		<option value="balanced">Balanced</option>
+</select>
 	&nbsp &nbsp
-	<input type="submit" value="Edit paramters" onclick="onSubmitClick()">
+	<input type="submit" value="Edit parameters" onclick="onSubmitClick()">
 	<br><br>
 	<table id="nameTable", border=1px>
 		<tr>
